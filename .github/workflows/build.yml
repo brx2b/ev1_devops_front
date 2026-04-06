@@ -15,12 +15,10 @@ jobs:
           username: ${{secrets.USERNAME_DOCKERHUB}}
           password: ${{secrets.PASSWORD_DOCKERHUB}}
 
-      - name: build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: |
-            ${{secrets.USERNAME_DOCKERHUB}}/frontend:latest
-            ${{secrets.DOCKERHUB_USERNAME }}/frontend:latest
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag ${{secrets.USER_DOCKERHUB}}/ev1_devopz:latest
+
+      - name: push dockerhub
+        run: docker push ${{secrets.USER_DOCKERHUB}}/ev1_devopz:latest
 
