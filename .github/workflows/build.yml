@@ -1,0 +1,26 @@
+name: Docker Image CI
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login dockerhub
+        uses: docker/login-action@v3
+        with: 
+          username: ${{secrets.USERNAME_DOCKERHUB}}
+          password: ${{secrets.PASSWORD_DOCKERHUB}}
+
+      - name: build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{secrets.USERNAME_DOCKERHUB}}/frontend:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/FrontEnd:v${{github.run_number }}
+
