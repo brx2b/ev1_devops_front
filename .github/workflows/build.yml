@@ -17,8 +17,8 @@ jobs:
 
       - uses: actions/checkout@v4
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ${{secrets.USER_DOCKERHUB}}/ev1_devopz:latest
+        run: docker build . --file Dockerfile --tag ${{secrets.USER_DOCKERHUB}}/evunodevopz:latest
 
       - name: push dockerhub
-        run: docker push ${{secrets.USER_DOCKERHUB}}/ev1_devopz:latest
+        run: docker push ${{secrets.USER_DOCKERHUB}}/evunodevopz:latest
 
