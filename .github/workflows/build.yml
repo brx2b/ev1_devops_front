@@ -22,5 +22,5 @@ jobs:
           push: true
           tags: |
             ${{secrets.USERNAME_DOCKERHUB}}/frontend:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/FrontEnd:v${{github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/frontEnd:v${{github.run_number }}
 
